@@ -31,3 +31,11 @@
   height: 1.2em !important;
   vertical-align: 0 !important;
 }
+#article-container ul > li:not(.tab):before {
+  display: none;
+}
+.power svg.icon {
+  width: 30px;
+  height: 30px;
+  vertical-align: 0;
+}
