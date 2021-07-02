@@ -1,9 +1,11 @@
 .card-widget.card-shuo
   .card-content(style='height:auto;min-height:280px;')
     .item-headline
-       i.fas.fa-comments
-       span 碎碎念
-       a#cardVisual(style='cursor:pointer;float:right', onclick='shuovisualchange()') 编辑
+      i.fas.fa-comments
+      span 
+        a(src=exclude title="artitalk page link") 碎碎念
+      a#cardVisual(style='cursor:pointer;float:right', onclick='shuovisualchange()') 编辑
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-artitalk-pro/lib/card.css" media="defer" onload="this.media='all'")
     #artitalk_main(style='width:100%;height:100%;padding:1px')
     script(async src="https://cdn.jsdelivr.net/npm/hexo-butterfly-artitalk-pro/lib/card_visual.js")
     include artitalk-init.pug
