@@ -16,6 +16,7 @@ hexo.extend.filter.register('after_generate', function (locals) {
   if (!(config && config.enable.card)) return
   // 集体声明配置项
     const card_data = {
+      page_enable: config.enable.page ? config.enable.page : false,
       enable_page: config.enable_page ? config.enable_page : "all",
       layout_type: config.layout.type,
       layout_name: config.layout.name,
