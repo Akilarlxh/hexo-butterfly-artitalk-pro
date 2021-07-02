@@ -38,7 +38,7 @@
       exclude: /artitalk/
       js: https://cdn.jsdelivr.net/npm/artitalk
       option:
-        serverURL: https://HgKoEBNq.api.lncldglobal.com
+        serverURL: https://********.api.lncldglobal.com #********替换成你的appID前八位
         lang: zh
         pageSize: 1
         color1: '#49b1f5'
