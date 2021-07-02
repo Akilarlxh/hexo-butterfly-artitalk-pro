@@ -1,2 +1,16 @@
 #artitalk_main
-  include artitalk-init.pug
+script.
+  (()=>{
+    const init = () => {
+      new Artitalk(Object.assign({
+        appId: '#{appId}',
+        appKey: '#{appKey}',
+      }, !{option} ))
+    }
+
+    if (typeof Artitalk === 'function') {
+      init()
+    } else {
+      getScript('!{js}').then(init)
+    }
+  })()

@@ -62,7 +62,7 @@
   |front_matter|json|【可选】Artitalk 頁面的 front_matter 配置|
   |appId|string|【必选】LeanCloud创建的应用中的 AppID|
   |appKey|string|【必选】LeanCloud创建的应用中的AppKEY|
-  |exclude|URL|【可选】同时开启页面版和插件版，需要手动填写页面版的相对链接。|
+  |exclude|URL|【可选】若同时开启了页面版和侧栏版插件，则需要手动填写页面版的相对链接。以保证在页面版不会加载侧栏版插件|
   |js|URL|【可选】Artitalk的CDN链接,默认为`https://cdn.jsdelivr.net/npm/artitalk`|
   |option|json|【可选】Artitalk需要的额外配置，详情可以参考[Artitalk官方文档](https://artitalk.js.org/settings.html#%F0%9F%98%9C-artitalk%E6%94%AF%E6%8C%81%E4%B8%A4%E7%A7%8D%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F)|
 

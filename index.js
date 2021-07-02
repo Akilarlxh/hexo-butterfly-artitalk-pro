@@ -30,6 +30,12 @@ hexo.extend.filter.register('after_generate', function (locals) {
   // 渲染页面
   const temple_html_text = config.temple_html ? config.temple_html : pug.renderFile(path.join(__dirname, './lib/card.pug'),card_data)
 
+  //cdn资源声明
+    //样式资源
+  const css_text = `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-artitalk-pro/lib/card.css" media="defer" onload="this.media='all'">`
+    //脚本资源
+  const js_text = `<script async src="https://cdn.jsdelivr.net/npm/hexo-butterfly-artitalk-pro/lib/card_visual.js"></script>`
+
   //注入容器声明
   var get_layout
   //若指定为class类型的容器
@@ -58,10 +64,28 @@ hexo.extend.filter.register('after_generate', function (locals) {
                         if( ${get_layout} && (location.pathname ==='${card_data.enable_page}'|| '${card_data.enable_page}' ==='all') && !(location.pathname ==='${card_data.exclude}')){
                         ${pluginname}_injector_config()
                         }
+                        (()=>{
+                          const init = () => {
+                            new Artitalk(Object.assign({
+                              appId: '${card_data.appId}',
+                              appKey: '${card_data.appKey}',
+                            }, ${card_data.option} ))
+                          }
+
+                          if (typeof Artitalk === 'function') {
+                            init()
+                          } else {
+                            getScript('${card_data.js}').then(init)
+                          }
+                        })()
                       </script>`
   // 注入用户脚本
   // 此处利用挂载容器实现了二级注入
   hexo.extend.injector.register('body_end', user_info_js, "default");
+  // 注入脚本资源
+  hexo.extend.injector.register('body_end', js_text, "default");
+  // 注入样式资源
+  hexo.extend.injector.register('head_end', css_text, "default");
 },
 hexo.extend.helper.register('priority', function(){
   // 过滤器优先级，priority 值越低，过滤器会越早执行，默认priority是10
