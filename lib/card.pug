@@ -3,9 +3,6 @@
     .item-headline
       i.fas.fa-comments
       span 
-        a(src=exclude title="artitalk page link") 碎碎念
+        a(href=exclude title="artitalk page link") 碎碎念
       a#cardVisual(style='cursor:pointer;float:right'  onclick='shuovisualchange()') 编辑
     #artitalk_main(style='width:100%;height:100%;padding:1px')
-      link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-artitalk-pro/lib/card.css" media="defer" onload="this.media='all'")
-      script(async src="https://cdn.jsdelivr.net/npm/hexo-butterfly-artitalk-pro/lib/card_visual.js")
-      include artitalk-init.pug
