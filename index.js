@@ -56,30 +56,43 @@ hexo.extend.filter.register('after_generate', function (locals) {
   // 挂载容器脚本
   // 此处在通用模板基础上，我们还需要加一条判断，保证不会在页面版再加载一个侧栏插件
   var user_info_js = `<script data-pjax>
-                        function ${pluginname}_injector_config(){
-                          var parent_div_git = ${get_layout};
-                          var item_html = '${temple_html_text}';
-                          console.log('已挂载${pluginname}')
-                          parent_div_git.insertAdjacentHTML("afterbegin",item_html)
-                          }
-                        if( ${get_layout} && (location.pathname ==='${card_data.enable_page}'|| '${card_data.enable_page}' ==='all') && !(location.pathname ==='${card_data.exclude}')){
-                        ${pluginname}_injector_config()
-                        }
-                        (()=>{
-                          const init = () => {
-                            new Artitalk(Object.assign({
-                              appId: '${card_data.appId}',
-                              appKey: '${card_data.appKey}',
-                            }, ${card_data.option} ))
-                          }
+  function ${pluginname}_injector_config(){
+    var parent_div_git = ${get_layout};
+    var item_html = '${temple_html_text}';
+    console.log('已挂载${pluginname}');
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html);
+    (()=>{
+      const init = () => {
+        new Artitalk(Object.assign({
+          appId: '${card_data.appId}',
+          appKey: '${card_data.appKey}',
+        }, ${card_data.option} ))
+      }
+      if (typeof Artitalk === 'function') {
+        init()
+      } else {
+        getScript('${card_data.js}').then(init)
+      }
+    })()
+    }
+  var elist = '${card_data.exclude}'.split(',');
+  var cpage = location.pathname;
+  var epage = '${card_data.enable_page}';
+  var flag = 0;
 
-                          if (typeof Artitalk === 'function') {
-                            init()
-                          } else {
-                            getScript('${card_data.js}').then(init)
-                          }
-                        })()
-                      </script>`
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    ${pluginname}_injector_config();
+  }
+  else if (epage === cpage){
+    ${pluginname}_injector_config();
+  }
+  </script>`
   // 注入用户脚本
   // 此处利用挂载容器实现了二级注入
   hexo.extend.injector.register('body_end', user_info_js, "default");

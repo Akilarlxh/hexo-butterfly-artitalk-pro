@@ -1,6 +1,6 @@
 {
   "name": "hexo-butterfly-artitalk-pro",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A talk plugin for theme-butterfly based on artitalk",
   "main": "index.js",
   "scripts": {
