@@ -21,7 +21,7 @@ hexo.extend.filter.register('after_generate', function (locals) {
       layout_type: config.layout.type,
       layout_name: config.layout.name,
       layout_index: config.layout.index ? config.layout.index : 0,
-      path: config.path ? config.path : "artitalk",
+      path: config.path ? "/" + config.path + "/" : "/artitalk/",
       exclude: config.exclude ? config.exclude : "/artitalk/",
       appId: config.appId,
       appKey: config.appKey,
