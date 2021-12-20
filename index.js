@@ -26,16 +26,18 @@ hexo.extend.filter.register('after_generate', function (locals) {
       appId: config.appId,
       appKey: config.appKey,
       option: config.option ? JSON.stringify(config.option) : false,
-      js: config.js ? urlFor(config.js) : 'https://cdn.jsdelivr.net/npm/artitalk'
+      js: config.js ? urlFor(config.js) : 'https://unpkg.zhimg.com/artitalk',
+      card_css: config.card_css ? urlFor(config.card_css) : 'https://unpkg.zhimg.com/hexo-butterfly-artitalk-pro/lib/card.css',
+      card_visual_js: config.card_visual_js ? urlFor(config.card_visual_js) : 'https://unpkg.zhimg.com/hexo-butterfly-artitalk-pro/lib/card_visual.js'
     }
   // 渲染页面
   const temple_html_text = config.temple_html ? config.temple_html : pug.renderFile(path.join(__dirname, './lib/card.pug'),card_data)
 
   //cdn资源声明
     //样式资源
-  const css_text = `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-artitalk-pro/lib/card.css" media="defer" onload="this.media='all'">`
+  const css_text = `<link rel="stylesheet" href="${card_data.card_css}" media="defer" onload="this.media='all'">`
     //脚本资源
-  const js_text = `<script async src="https://cdn.jsdelivr.net/npm/hexo-butterfly-artitalk-pro/lib/card_visual.js"></script>`
+  const js_text = `<script async src="${card_data.card_visual_js}"></script>`
 
   //注入容器声明
   var get_layout
@@ -120,7 +122,7 @@ hexo.extend.generator.register('artitalk', function (locals) {
     appId: config.appId,
     appKey: config.appKey,
     option: config.option ? JSON.stringify(config.option) : false,
-    js: config.js ? urlFor(config.js) : 'https://cdn.jsdelivr.net/npm/artitalk'
+    js: config.js ? urlFor(config.js) : 'https://unpkg.zhimg.com/artitalk'
   }
 
   const content = pug.renderFile(path.join(__dirname, './lib/page.pug'), page_data)

@@ -38,7 +38,9 @@
       exclude:
         - /artitalk/
         - /posts/ #需要abbrlink插件支持
-      js: https://cdn.jsdelivr.net/npm/artitalk
+      js: https://unpkg.zhimg.com/artitalk
+      card_css: https://unpkg.zhimg.com/hexo-butterfly-artitalk-pro/lib/card.css
+      card_visual_js: https://unpkg.zhimg.com/hexo-butterfly-artitalk-pro/lib/card_visual.js
       option:
         serverURL: https://********.api.lncldglobal.com #********替换成你的appID前八位
         lang: zh
@@ -65,11 +67,13 @@
   |appId|string|【必选】LeanCloud创建的应用中的 AppID|
   |appKey|string|【必选】LeanCloud创建的应用中的AppKEY|
   |exclude|URL|【可选】若同时开启了页面版和侧栏版插件，则需要手动填写页面版的相对链接。以保证在页面版不会加载侧栏版插件。可以多个。写法见示例。原理是将屏蔽项的内容逐个放到当前路径去匹配，若当前路径包含任一屏蔽项，则不会挂载。|
-  |js|URL|【可选】Artitalk的CDN链接,默认为`https://cdn.jsdelivr.net/npm/artitalk`|
+  |js|URL|【可选】Artitalk的CDN链接,默认为`https://unpkg.zhimg.com/artitalk`|
+  |card_css|URL|【可选】卡片样式的CDN链接,默认为`https://unpkg.zhimg.com/hexo-butterfly-artitalk-pro/lib/card.css`|
+  |card_visual_js|URL|【可选】卡片样式控制版块显隐的CDN链接,默认为`https://unpkg.zhimg.com/hexo-butterfly-artitalk-pro/lib/card_visual.js`|
   |option|json|【可选】Artitalk需要的额外配置，详情可以参考[Artitalk官方文档](https://artitalk.js.org/settings.html#%F0%9F%98%9C-artitalk%E6%94%AF%E6%8C%81%E4%B8%A4%E7%A7%8D%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F)|
 
 # 截图
 ## 侧栏插件预览
-![](https://cdn.jsdelivr.net/npm/akilar-candyassets/image/fbece72e.png)
+![](https://unpkg.zhimg.com/akilar-candyassets/image/fbece72e.png)
 ## 页面生成预览
 ![](https://user-images.githubusercontent.com/16351105/107762957-c4c1e580-6d68-11eb-984f-74c9bf6325e9.png)
